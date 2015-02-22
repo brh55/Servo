@@ -4,7 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'ngResource',
-  'myApp.servo',
+  'myApp.servo.station',
+  'myApp.servo.incident',
   'myApp.version'
 ])
 .constant('BASE_URL', 'http://confident-tornado-80-198004.use1-2.nitrousbox.com')
@@ -13,11 +14,15 @@ angular.module('myApp', [
     station: $resource(
       BASE_URL + '/stations/:id',
       { id: '@id' }
+    ),
+    incident: $resource(
+      BASE_URL + '/incidents/:id',
+      { id: '@id' }
     )
   }
 }])
 .config(['$routeProvider', '$resourceProvider',
          function($routeProvider, $resourceProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/stations'});
   $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
