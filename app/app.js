@@ -23,6 +23,6 @@ angular.module('myApp', [
 }])
 .config(['$routeProvider', '$resourceProvider',
          function($routeProvider, $resourceProvider) {
-  $routeProvider.otherwise({redirectTo: '/stations'});
+  $routeProvider.otherwise({ redirectTo: '/stations' });
   $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);

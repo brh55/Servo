@@ -16,7 +16,7 @@ angular.module('myApp.servo.station', ['ngRoute'])
 .controller('StationListCtrl', ['Service', '$scope',
                                 function(Service, $scope) {
   var mapOptions = {
-    zoom: 9,
+    zoom: 10,
     // Philadelphia Cooridnates
     center: new google.maps.LatLng(40.004883, -75.118033)
   };
@@ -26,32 +26,43 @@ angular.module('myApp.servo.station', ['ngRoute'])
   var stations = Service.station.query(
     // Success callback
     function(value, responseHeaders) {
+      var markers = [];
       // First create markers for each location.
       for (var i = 0; i < stations.length; i++) {
         // Due to the fact that the ArcGIS API returns geometry results
         // that do not adhere to standard latitude and longitude
         // coordinates, the `x` and `y` values must be divided the
         // values listed below.
-        var lat = stations[i].x / 67543.4729809435;
-        var lng = stations[i].y / -3315.868693552735;
+        var lat = stations[i].x;
+        var lng = stations[i].y;
         var myLatlng = new google.maps.LatLng(lat, lng);
         var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
-          title: stations[i].station_id
+          title: stations[i].id
         });
+        markers.push(marker);
         // Register event listener for click event of marker and display
         // information regarding a specific station.
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
             infoWindow.setContent(
-              '<div>' + stations[i].station_id + '</div>' +
-              '<div><a href="#/stations/' + stations[i].station_id + '">View</a>'
+              '<div>Station: ' + stations[i].id + '</div>' +
+              '<div><a href="#/stations/' + stations[i].id + '">View</a>'
             );
             infoWindow.open(map, marker);
           }
         })(marker, i));
       }
+      $scope.toggleStations = function() {
+        for (var i = 0; i < markers.length; i++) {
+          if (markers[i].getMap() === null) {
+            markers[i].setMap(map);
+          } else {
+            markers[i].setMap(null);
+          }
+        }
+      };
     },
     // Error callback
     function(httpResponse) {
@@ -68,21 +79,27 @@ angular.module('myApp.servo.station', ['ngRoute'])
     // success callback
     function(value, responseHeaders) {
       var incidentData = [];
+      var markers = [];
       for (var i = 0; i < incidents.length; i++) {
         var location = incidents[i].location;
-        var lat = location.x / 67543.4729809435;
-        var lng = location.y / -3315.868693552735;
+        var lat = location.x;
+        var lng = location.y;
         var myLatlng = new google.maps.LatLng(lat, lng);
         incidentData.push(new google.maps.LatLng(lat, lng));
         var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 2
+          },
           title: incidents[i].incident_id.toString()
-        })
+        });
+        markers.push(marker);
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
             infoWindow.setContent(
-              '<div>' + incidents[i].incident_id.toString() + '</div>' +
+              '<div>Incident: ' + incidents[i].incident_id.toString() + '</div>' +
               '<div><a href="#/incidents/' + incidents[i].incident_id.toString() + '">View</a>'
             );
             infoWindow.open(map, marker);
@@ -95,7 +112,19 @@ angular.module('myApp.servo.station', ['ngRoute'])
       });
       heatmap.setMap(map);
       $scope.changeRadius = function() {
-        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+        heatmap.set('radius', heatmap.get('radius') ? null : 40);
+      };
+      $scope.toggleHeatmap = function() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      };
+      $scope.toggleIncidents = function() {
+        for (var i = 0; i < markers.length; i++) {
+          if (markers[i].getMap() === null) {
+            markers[i].setMap(map);
+          } else {
+            markers[i].setMap(null);
+          }
+        }
       };
     },
     function(httpResponse) {

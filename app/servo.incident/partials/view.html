@@ -1,34 +1,23 @@
 <section class="wrapper">
-<h2> Incident Detail </h2>
-<div class="col-md-6 col-sm-6 mb">
-  <article class="content-panel pn">
-    <div class="darkblue-header">
-      <h5><i class="fa fa-fire-extinguisher"></i> Responder Detail </h5>
-    </div>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-    </div>
-  </article>
-</div>
-<div class="col-md-6 col-sm-6 mb">
-  <article class="content-panel pn">
-    <div class="darkblue-header">
-      <h5><i class="fa fa-fire"></i>  Incident Detail </h5>
-    </div>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-      <p class="mt"><b>$ 17,980</b><br>Month Income</p>
-    </div>
-  </article>
-</div>
-
+<h2>Incident Detail</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 mb">
   <article class="content-panel pn">
     <div class="darkblue-header">
-      <h5><i class="fa fa-pencil"></i> Description </h5>
-      <div class="panel-padding">
-        <p class="mt no-border align-left">lsls saldal sdla dl asld ald </p>
-      </div>
+      <h5><i class="fa fa-fire"></i>Incident Detail</h5>
+    </div>
+    <div>
+      <p class="mt">
+        <b>{{ incident.alarms }}</b>
+        <br>
+        <span data-ng-if="alarms.length > 0">
+          Alarms
+        </span>
+        <span data-ng-else>
+          Alarm
+        </span>
+      </p>
+      <p class="mt"><b>{{ incident.type }}</b><br>Type</p>
+      <p class="mt"><b>{{ incident.dispatched_at }}</b><br>Dispatched at</p>
+    </div>
   </article>
 </div>

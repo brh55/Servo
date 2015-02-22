@@ -136,7 +136,39 @@ p.mt:nth-child(1) {
   padding: 20px;
 }
 
+.mt-filter-title {
+  color: rgb(82, 82, 82);
+}
+
+.filter-panel {
+  padding: 15px; 
+}
+
+.filter-panel h4 {
+  color: rgb(82, 82, 82);
+  border-bottom: 1px dotted rgba(82,82,82, .6);
+  margin-left: 0px;
+  padding-bottom: 3px;
+}
+
+.btn {
+}
+
+button.btn.btn-theme03.radial {
+  margin-left: 0px;
+}
 /* animations */
 #sidebar, #main-content {
   transition: all .3s ease;
+}
+
+th, td{
+  padding-left: 15px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+{ padding-left: 15px;}
+
+.content-panel {
+  padding: 15px;
 }

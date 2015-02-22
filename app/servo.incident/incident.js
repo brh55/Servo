@@ -29,8 +29,8 @@ angular.module('myApp.servo.incident', ['ngRoute'])
       var incidentData = [];
       for (var i = 0; i < incidents.length; i++) {
         var location = incidents[i].location;
-        var lat = location.x / 67543.4729809435;
-        var lng = location.y / -3315.868693552735;
+        var lat = location.x;
+        var lng = location.y;
         incidentData.push(new google.maps.LatLng(lat, lng));
       }
       var pointArray = new google.maps.MVCArray(incidentData);
