@@ -17,8 +17,8 @@ angular.module('myApp.servo.incident', ['ngRoute'])
                                 function(Service, $scope) {
   // This code may not be used. Keeping it here just in case, though.
   var mapOptions = {
-    zoom: 13,
-    center: new google.maps.LatLng(37.774546, -122.433523),
+    zoom: 9,
+    center: new google.maps.LatLng(40.004883, -75.118033),
     mapTypeId: google.maps.MapTypeId.SATELLITE
   };
   var map = new google.maps.Map(document.getElementById('map-canvas'),
