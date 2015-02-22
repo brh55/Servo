@@ -8,7 +8,7 @@ angular.module('myApp', [
   'myApp.servo.incident',
   'myApp.version'
 ])
-.constant('BASE_URL', 'http://confident-tornado-80-198004.use1-2.nitrousbox.com')
+.constant('BASE_URL', 'http://amberheilman.com')
 .factory('Service', ['BASE_URL', '$resource', function(BASE_URL, $resource) {
   return {
     station: $resource(
