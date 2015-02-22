@@ -7,6 +7,10 @@ angular.module('myApp.servo.incident', ['ngRoute'])
       templateUrl: 'servo.incident/partials/index.html',
       controller: 'IncidentListCtrl'
     })
+    .when('/incidents/:id', {
+      templateUrl: 'servo.incident/partials/view.html',
+      controller: 'IncidentViewCtrl'
+    })
   ;
 }])
 .controller('IncidentListCtrl', ['Service', '$scope',
@@ -38,6 +42,16 @@ angular.module('myApp.servo.incident', ['ngRoute'])
     function(httpResponse) {
       // Assign errors to httpResponse to access attributes via dot notation.
       $scope.errors = httpResponse;
+    }
+  );
+}])
+
+.controller('IncidentViewCtrl', ['Service', '$scope', '$routeParams',
+                                function(Service, $scope, $routeParams) {
+  var incident = Service.incident.get(
+    { id: $routeParams.id },
+    function(value, responseHeaders) {
+      $scope.incident = incident;
     }
   );
 }]);

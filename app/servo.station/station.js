@@ -32,9 +32,9 @@ angular.module('myApp.servo.station', ['ngRoute'])
         // that do not adhere to standard latitude and longitude
         // coordinates, the `x` and `y` values must be divided the
         // values listed below.
-        var Lat = stations[i].x / 67543.4729809435;
-        var Lng = stations[i].y / -3315.868693552735;
-        var myLatlng = new google.maps.LatLng(Lat, Lng);
+        var lat = stations[i].x / 67543.4729809435;
+        var lng = stations[i].y / -3315.868693552735;
+        var myLatlng = new google.maps.LatLng(lat, lng);
         var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
@@ -72,13 +72,31 @@ angular.module('myApp.servo.station', ['ngRoute'])
         var location = incidents[i].location;
         var lat = location.x / 67543.4729809435;
         var lng = location.y / -3315.868693552735;
+        var myLatlng = new google.maps.LatLng(lat, lng);
         incidentData.push(new google.maps.LatLng(lat, lng));
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: incidents[i].incident_id.toString()
+        })
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infoWindow.setContent(
+              '<div>' + incidents[i].incident_id.toString() + '</div>' +
+              '<div><a href="#/incidents/' + incidents[i].incident_id.toString() + '">View</a>'
+            );
+            infoWindow.open(map, marker);
+          }
+        })(marker, i));
       }
       var pointArray = new google.maps.MVCArray(incidentData);
       var heatmap = new google.maps.visualization.HeatmapLayer({
         data: pointArray
       });
       heatmap.setMap(map);
+      $scope.changeRadius = function() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      };
     },
     function(httpResponse) {
       // Assign errors to httpResponse to access attributes via dot notation.

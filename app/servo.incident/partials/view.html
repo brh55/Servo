@@ -1,42 +1,30 @@
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Incident ID: {{ incidents.incident_id }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <table>
-          <th>Responder</th>
-            <tbody>
-              <tr>
-                <td>{{ incidents.responders.id }}</td>
-                <td>
-              </tr>
-            </tbody>
-        </table>
-      </td>
-      <td>
-        <table>
-          <th>Details</th>
-            <tbody>
-              <tr>
-                <td>Responder Detail</td>
-              </tr>
-            </tbody>
-        </table>
-      </td>
-      <td>
-         <table>
-          <th>Description</th>
-            <tbody>
-              <tr>
-                <td>{{ incidents.</td>
-              </tr>
-            </tbody>
-        </table>
-      </td>    
-    </tr>
-  </tbody>
-</table>
+<div class="col-md-4 col-sm-4 mb">
+  <!-- REVENUE PANEL -->
+  <div class="darkblue-panel pn">
+    <div class="darkblue-header">
+      <h5>Responders {{ incident.incident_id }}</h5>
+    </div>
+    <div class="chart mt">
+      <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"><canvas width="167" height="75" style="display: inline-block; width: 167px; height: 75px; vertical-align: top;"></canvas></div>
+    </div>
+    <p class="mt"><b>$ 17,980</b><br>Month Income</p>
+  </div>
+</div>
+
+<div class="white-panel pn">
+  <div class="white-header">
+    <h5>Description</h5>
+	</div>
+  <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
+  <p><b>Zac Snider</b></p>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="small mt">MEMBER SINCE</p>
+      <p>2012</p>
+    </div>
+    <div class="col-md-6">
+      <p class="small mt">TOTAL SPEND</p>
+      <p>$ 47,60</p>
+    </div>
+  </div>
+</div>
