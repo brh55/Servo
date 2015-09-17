@@ -28,3 +28,147 @@
   content: "";
   padding: 0;
 }
+
+/* Google Maps */
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+.map-xtension {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+}
+
+section#main-content.map-xtension-wrap {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+}
+
+section#main-content {
+  height: 100%;
+}
+
+.ng-scope {
+  height: 100%;
+}
+
+/* btn styles */
+.btn.btn-default {
+  height: 40px !important;
+}
+
+.btn {
+  height: initial !important;
+  transition: .5s all ease;
+}
+
+.filters.ng-scope {
+  height: initial;
+}
+
+.filters.ng-scope > .wrapper {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wrapper {
+  margin-top: 30px;
+}
+
+.wrapper.map-xtension {
+  margin-top: 60px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+#main-content h2 {
+  padding-bottom: 10px;
+  margin: 0 15px 25px 15px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+}
+/* color styles */
+.mt {
+  color: rgb(219, 219, 219);
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgb(51, 58, 68);
+}
+
+.mt.no-border, .content-panel .mt.no-border {
+  border-bottom: 0px;
+}
+
+p.mt:nth-child(1) {
+  margin-top: 10px;
+}
+
+.darkblue-panel h5, .content-panel h5 {
+  padding-bottom: 10px;
+  border-bottom: 1px dotted rgb(137, 137, 137);
+  margin-bottom: -15px;
+}
+
+.darkblue-header h5, .content-panel h5 {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.content-panel .mt {
+  padding-left: 15px;
+  color: rgb(111, 111, 111);
+  border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.pn {
+  min-height: 250px;
+  padding-bottom: 20px;
+}
+
+.panel-padding {
+  padding: 20px;
+}
+
+.mt-filter-title {
+  color: rgb(82, 82, 82);
+}
+
+.filter-panel {
+  padding: 15px; 
+}
+
+.filter-panel h4 {
+  color: rgb(82, 82, 82);
+  border-bottom: 1px dotted rgba(82,82,82, .6);
+  margin-left: 0px;
+  padding-bottom: 3px;
+}
+
+.btn {
+}
+
+button.btn.btn-theme03.radial {
+  margin-left: 0px;
+}
+/* animations */
+#sidebar, #main-content {
+  transition: all .3s ease;
+}
+
+th, td{
+  padding-left: 15px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+{ padding-left: 15px;}
+
+.content-panel {
+  padding: 15px;
+}
